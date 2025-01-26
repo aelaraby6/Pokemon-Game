@@ -1,9 +1,11 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body {
     background-image: url(assets/land.png);
     background-size: cover;
 }
 
-.player{
+.player {
     width: 80px;
     height: 100px;
     background-image: url(assets/player_front.png);
@@ -12,24 +14,30 @@ body{
     z-index: 1000;
 }
 
-.player.walk{
+.player.walk {
     animation: walk .2s step-end infinite;
 }
 
-@keyframes walk{
-    0%,32%{
+@keyframes walk {
+
+    0%,
+    32% {
         background-position: 0 0;
     }
-    33%,65%{
+
+    33%,
+    65% {
         background-position: -80px 0;
     }
-    66%,100%{
+
+    66%,
+    100% {
         background-position: -160px 0;
     }
-    
+
 }
 
-.grass{
+.grass {
     width: 50px;
     height: 50px;
     background-image: url(assets/grass.png);
@@ -37,26 +45,38 @@ body{
     position: fixed;
     z-index: 0;
 }
-.ball{
+
+.ball {
     width: 30px;
     height: 30px;
     background-image: url(assets/pokeball.png);
     background-size: 100% 100%;
     position: fixed;
-    z-index: 1; 
+    z-index: 1;
 }
 
-.score{
-   margin: 20px auto;
-   width: 100px;
-   height: 30px;
-   border-radius: 50%;
-   background-color: white;
-   text-align: center;
-   padding: 10px;
-   z-index: 2000;
-   font-weight: 800;
-   position: relative;
-   z-index: 2000;
-   font-size: 17px;
+.score {
+    margin: 20px auto;
+    width: 120px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #2e7d32;
+    border: 2px solid #2e7d32;
+    font-family: 'Cairo', sans-serif;
+    position: relative;
+    z-index: 2000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.score:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }

@@ -35,7 +35,6 @@ function update() {
     requestAnimationFrame(update);
 }
 
-//==========================================
 
 window.addEventListener("keydown", (e) => {
     if (e.key == "ArrowUp") {
@@ -108,6 +107,5 @@ function checkCollisions() {
   }
   
   
-//===================================
 start();
 update();
