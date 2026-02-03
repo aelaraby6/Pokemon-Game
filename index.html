@@ -7,8 +7,33 @@
     <title>Pokemon Game</title>
 </head>
 <body>
-    <div class="player"></div>
-    <div class="score">Score : <span></span></div>
+    <div class="menu" id="startMenu">
+        <h1>Pokemon Collector</h1>
+        <p>High Score: <span id="highScore">0</span></p>
+        <button onclick="startGame()">Start Game</button>
+        <div class="instructions">
+            <p>Use Arrow Keys to Move</p>
+            <p>Collect Pokeballs - Avoid Enemies</p>
+        </div>
+    </div>
+    
+    <div class="game-container" id="gameContainer" style="display:none;">
+        <div class="player"></div>
+        <div class="hud">
+            <div class="score">Score: <span id="scoreValue">0</span></div>
+            <div class="timer">Time: <span id="timeValue">90</span></div>
+            <div class="level">Level: <span id="levelValue">1</span></div>
+            <div class="lives">Lives: <span id="livesValue">5</span></div>
+        </div>
+    </div>
+    
+    <div class="game-over" id="gameOver" style="display:none;">
+        <h1>Game Over!</h1>
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <p>Level Reached: <span id="finalLevel">1</span></p>
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+    
     <script src="main.js"></script>
 </body>
 </html>

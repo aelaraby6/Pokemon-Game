@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-image: url(assets/land.png);
     background-size: cover;
+    font-family: 'Cairo', sans-serif;
+    overflow: hidden;
 }
 
 .player {
@@ -34,7 +42,6 @@ body {
     100% {
         background-position: -160px 0;
     }
-
 }
 
 .grass {
@@ -53,30 +60,172 @@ body {
     background-size: 100% 100%;
     position: fixed;
     z-index: 1;
+    transition: transform 0.3s;
 }
 
-.score {
-    margin: 20px auto;
-    width: 120px;
-    height: 50px;
+.ball.collect {
+    animation: collect 0.3s;
+}
+
+@keyframes collect {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5) rotate(180deg);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+.enemy {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #ff0000, #8b0000);
+    border-radius: 50%;
+    position: fixed;
+    z-index: 500;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.powerup {
+    width: 40px;
+    height: 40px;
+    background: gold;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 1;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hud {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 2000;
+}
+
+.score,
+.timer,
+.level,
+.lives {
+    padding: 10px 20px;
     border-radius: 25px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     color: #2e7d32;
     border: 2px solid #2e7d32;
-    font-family: 'Cairo', sans-serif;
-    position: relative;
-    z-index: 2000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.score:hover {
+.timer {
+    color: #d32f2f;
+    border-color: #d32f2f;
+}
+
+.level {
+    color: #1976d2;
+    border-color: #1976d2;
+}
+
+.lives {
+    color: #f57c00;
+    border-color: #f57c00;
+}
+
+.menu,
+.game-over {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 60px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 3000;
+}
+
+.menu h1,
+.game-over h1 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.menu p,
+.game-over p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.menu button,
+.game-over button {
+    margin-top: 20px;
+    padding: 15px 40px;
+    font-size: 20px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+    transition: all 0.3s;
+}
+
+.menu button:hover,
+.game-over button:hover {
+    background: #1b5e20;
     transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.instructions {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+.instructions p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+.player.hit {
+    animation: shake 0.3s;
 }
